@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vendor Login | Pratik Enterprises</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="auth-page">
+      <form id="vendorLoginForm" class="auth-card">
+        <a class="brand" href="index.html"><span class="brand-mark">P</span><span>Pratik Enterprises</span></a>
+        <div>
+          <p class="eyebrow">Vendor Access</p>
+          <h1>Vendor Login</h1>
+          <p class="muted">Only the business owner can manage products from here.</p>
+        </div>
+        <label>
+          Username
+          <input name="username" type="text" autocomplete="username" required>
+        </label>
+        <label>
+          Password
+          <input name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button type="submit">Login</button>
+        <p id="vendorLoginMessage" class="form-message"></p>
+      </form>
+    </main>
+    <script src="admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-label="FRP material and products">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f6f3eb"/>
+      <stop offset="1" stop-color="#a9bdc2"/>
+    </linearGradient>
+    <linearGradient id="roll" x1="0" x2="1">
+      <stop offset="0" stop-color="#fff4dd"/>
+      <stop offset=".55" stop-color="#d4bd8f"/>
+      <stop offset="1" stop-color="#8c7346"/>
+    </linearGradient>
+    <pattern id="threads" width="34" height="34" patternUnits="userSpaceOnUse" patternTransform="rotate(22)">
+      <path d="M0 8h34M0 26h34" stroke="#fff8e8" stroke-width="2" opacity=".35"/>
+      <path d="M9 0v34M25 0v34" stroke="#745f3b" stroke-width="1" opacity=".16"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="20" flood-color="#24384a" flood-opacity=".22"/>
+    </filter>
+  </defs>
+  <rect width="900" height="620" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="92" y="120" width="226" height="360" rx="16" fill="url(#roll)"/>
+    <rect x="121" y="154" width="168" height="292" rx="9" fill="url(#threads)" opacity=".95"/>
+    <rect x="376" y="90" width="196" height="410" rx="98" fill="#eadcc1"/>
+    <ellipse cx="474" cy="90" rx="98" ry="42" fill="#fff6e7"/>
+    <path d="M389 134c48 20 121 22 170 0v330c-48 24-122 24-170 0z" fill="url(#roll)"/>
+    <ellipse cx="474" cy="500" rx="98" ry="42" fill="#8e7750"/>
+    <rect x="624" y="150" width="190" height="330" rx="18" fill="#357064"/>
+    <rect x="655" y="190" width="128" height="250" rx="10" fill="url(#threads)" opacity=".45"/>
+  </g>
+  <path d="M0 506c150-38 295-42 438-12 156 34 296 18 462-42v168H0z" fill="#566f79" opacity=".28"/>
+</svg>

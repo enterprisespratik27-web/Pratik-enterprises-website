@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pratik Enterprises | Products</title>
+    <meta name="description" content="Products from Pratik Enterprises with product photos, one PDF catalogue, and direct contact buttons.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html"><span class="brand-mark">P</span><span>Pratik Enterprises</span></a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a class="active" href="products.html">Products</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-head">
+        <div class="page-head-inner">
+          <p class="eyebrow">Our Products</p>
+          <h1>FRP Planter</h1>
+          <p>Add product names, details, and photos here. When customers like a product, they can send a direct WhatsApp inquiry.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Product Gallery</p>
+              <h2>Our FRP planter collection</h2>
+            </div>
+          </div>
+          <div id="productGrid" class="grid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section id="catalogue" class="section soft">
+        <div class="section-inner">
+          <div class="pdf-panel">
+            <div>
+              <p class="eyebrow">PDF Catalogue</p>
+              <h2>Product catalogue</h2>
+              <p class="muted">View complete product information in one PDF.</p>
+            </div>
+            <div class="pdf-tools">
+              <a id="pdfPreviewLink" class="button secondary" href="assets/pratik-enterprises-info.pdf" target="_blank" rel="noopener">View Catalogue</a>
+              <a class="button" href="assets/pratik-enterprises-info.pdf" download="Pratik-Enterprises-Catalogue.pdf">Download Catalogue</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span data-business-name>Pratik Enterprises</span>
+        <a data-whatsapp target="_blank" rel="noopener" href="#">WhatsApp Inquiry</a>
+      </div>
+    </footer>
+    <script src="products-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

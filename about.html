@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pratik Enterprises | About Us</title>
+    <meta name="description" content="About Pratik Enterprises.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html"><span class="brand-mark">P</span><span>Pratik Enterprises</span></a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a class="active" href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-head">
+        <div class="page-head-inner">
+          <p class="eyebrow">About Us</p>
+          <h1 data-about-display="heroTitle">Pratik Enterprises</h1>
+          <p data-about-display="heroText">We focus on quality products, clear information, and quick customer response.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner split">
+          <div>
+            <div class="section-kicker">
+              <p class="eyebrow">Our Work</p>
+              <button id="openAboutEditor" class="button ghost small-button" type="button">Edit Content</button>
+            </div>
+            <h2 data-about-display="mainTitle">Practical product support for business needs</h2>
+            <p class="muted" data-about-display="mainText">Pratik Enterprises gives customers a simple way to view product details, explore the catalogue, and send direct inquiries. You can add your company story, experience, product categories, and service areas here.</p>
+            <div class="info-list">
+              <div class="info-item">
+                <span class="info-icon">1</span>
+                <div><h3 data-about-display="pointOneTitle">Clear Information</h3><p class="muted" data-about-display="pointOneText">Product photos, details, and PDF catalogue in one place.</p></div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">2</span>
+                <div><h3 data-about-display="pointTwoTitle">Easy Inquiry</h3><p class="muted" data-about-display="pointTwoText">Customers can ask about products directly through WhatsApp.</p></div>
+              </div>
+              <div class="info-item">
+                <span class="info-icon">3</span>
+                <div><h3 data-about-display="pointThreeTitle">Reliable Service</h3><p class="muted" data-about-display="pointThreeText">Fast responses and practical product guidance.</p></div>
+              </div>
+            </div>
+          </div>
+          <img class="about-photo" src="assets/frp-planter-background.png" alt="FRP planters from Pratik Enterprises">
+        </div>
+      </section>
+
+      <div id="aboutEditorModal" class="editor-modal" aria-hidden="true">
+        <div class="editor-dialog" role="dialog" aria-modal="true" aria-labelledby="aboutEditorTitle">
+          <div class="editor-head">
+            <div>
+              <p class="eyebrow">Edit About Us</p>
+              <h2 id="aboutEditorTitle">Update company information</h2>
+            </div>
+            <button id="closeAboutEditor" class="modal-close" type="button" aria-label="Close editor">X</button>
+          </div>
+          <form id="aboutForm" class="edit-form">
+            <label>
+              Top heading
+              <input name="heroTitle" type="text">
+            </label>
+            <label>
+              Top description
+              <textarea name="heroText"></textarea>
+            </label>
+            <label>
+              Main heading
+              <input name="mainTitle" type="text">
+            </label>
+            <label>
+              Main description
+              <textarea name="mainText"></textarea>
+            </label>
+            <label>
+              Point 1 title
+              <input name="pointOneTitle" type="text">
+            </label>
+            <label>
+              Point 1 description
+              <textarea name="pointOneText"></textarea>
+            </label>
+            <label>
+              Point 2 title
+              <input name="pointTwoTitle" type="text">
+            </label>
+            <label>
+              Point 2 description
+              <textarea name="pointTwoText"></textarea>
+            </label>
+            <label>
+              Point 3 title
+              <input name="pointThreeTitle" type="text">
+            </label>
+            <label>
+              Point 3 description
+              <textarea name="pointThreeText"></textarea>
+            </label>
+            <div class="editor-actions">
+              <button id="resetAbout" class="button ghost" type="button">Reset About</button>
+              <button id="saveAboutEditor" type="button">Done</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span data-business-name>Pratik Enterprises</span>
+        <a data-whatsapp target="_blank" rel="noopener" href="#">WhatsApp Inquiry</a>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>

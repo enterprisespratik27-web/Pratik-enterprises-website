@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vendor Dashboard | Pratik Enterprises</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="Vendor navigation">
+        <a class="brand" href="index.html"><span class="brand-mark">P</span><span>Pratik Enterprises</span></a>
+        <div class="nav-links">
+          <a href="products.html">Public Products</a>
+          <button id="vendorLogout" class="button ghost small-button" type="button">Logout</button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <div class="page-head-inner">
+          <p class="eyebrow">Owner Area</p>
+          <h1>Vendor Dashboard</h1>
+          <p>Add, update, or remove products. Public users will only see the product gallery.</p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-inner dashboard-layout">
+          <form id="productForm" class="dashboard-panel">
+            <h2>Add Product</h2>
+            <input name="name" type="text" placeholder="Product name" required>
+            <textarea name="details" placeholder="Product details" required></textarea>
+            <input name="image" type="file" accept="image/*">
+            <button type="submit">Save Product</button>
+            <p id="productFormMessage" class="form-message"></p>
+          </form>
+          <div class="dashboard-panel">
+            <div class="section-title compact-title">
+              <div>
+                <p class="eyebrow">Products</p>
+                <h2>Current Gallery</h2>
+              </div>
+            </div>
+            <div id="vendorProductList" class="vendor-list"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="admin.js"></script>
+  </body>
+</html>

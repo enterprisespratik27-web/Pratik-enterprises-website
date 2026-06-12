@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pratik Enterprises | Home</title>
+    <meta name="description" content="Pratik Enterprises product website with products, PDF catalogue, and direct contact options.">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="index.html"><span class="brand-mark">P</span><span>Pratik Enterprises</span></a>
+        <div class="nav-links">
+          <a class="active" href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+          <a href="#user-login">User Login</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Quality Products, Reliable Service</p>
+            <h1>Pratik Enterprises</h1>
+            <p>We provide dependable products and quick support for your business needs. If you like a product, contact us directly on WhatsApp.</p>
+            <div class="actions">
+              <a class="button" href="products.html">View Products</a>
+              <a class="button ghost" href="#user-login">User Login</a>
+              <a class="button secondary" data-whatsapp target="_blank" rel="noopener" href="#">Contact on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Why Choose Us</p>
+              <h2>Simple process, fast response</h2>
+            </div>
+            <a class="button ghost" href="contact.html">Contact Details</a>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3>Product Photos</h3>
+              <p>Add your own product photos on the products page so customers can see a clear preview.</p>
+            </article>
+            <article class="card">
+              <h3>PDF Catalogue</h3>
+              <p>Add an information PDF so customers can view your full product details in one place.</p>
+            </article>
+            <article class="card">
+              <h3>Direct Contact</h3>
+              <p>Each product includes a contact button that sends customers directly to a WhatsApp inquiry.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="user-login" class="section soft">
+        <div class="section-inner home-login">
+          <div>
+            <p class="eyebrow">Customer Login</p>
+            <h2>Login to view products and chat</h2>
+            <p class="muted">Enter your name to open the user page with product list and chatbot support.</p>
+          </div>
+          <form id="userLoginForm" class="home-login-form">
+            <input name="name" type="text" placeholder="Your name" autocomplete="name" required>
+            <button type="submit">Open User Page</button>
+            <p id="userLoginMessage" class="form-message"></p>
+          </form>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <span data-business-name>Pratik Enterprises</span>
+        <span>Products | Catalogue | Direct Contact</span>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script src="user.js"></script>
+  </body>
+</html>

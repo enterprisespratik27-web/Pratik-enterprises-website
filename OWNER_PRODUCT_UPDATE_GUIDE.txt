@@ -1,0 +1,27 @@
+How to update products safely
+
+This website is a static GitHub Pages website.
+Public users cannot add or edit products from the website.
+Only the GitHub repo owner/collaborator can change products by updating files and pushing to GitHub.
+
+To add a product:
+1. Put the product photo inside the assets folder.
+   Example:
+   assets/frp-product-new.jpeg
+
+2. Open products-data.js.
+
+3. Add a new product item inside window.pratikProducts:
+
+{
+  id: "new-product",
+  name: "New FRP Planter",
+  details: "Write product details here.",
+  image: "assets/frp-product-new.jpeg"
+}
+
+4. Commit and push changes to GitHub.
+
+5. Wait 1-5 minutes for GitHub Pages to update.
+
+Do not add an Add Product button to the public website unless you also add a secure backend/login system.

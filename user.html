@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Page | Pratik Enterprises</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="nav" aria-label="User navigation">
+        <a class="brand" href="index.html"><span class="brand-mark">P</span><span>Pratik Enterprises</span></a>
+        <div class="nav-links">
+          <a href="products.html">Products</a>
+          <a href="contact.html">Contact Us</a>
+          <button id="userLogout" class="button ghost small-button" type="button">Logout</button>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="page-head">
+        <div class="page-head-inner">
+          <p class="eyebrow">Customer Page</p>
+          <h1>FRP Planter Products</h1>
+          <p>Browse products and ask the chatbot for basic information.</p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-inner">
+          <div id="userProductGrid" class="grid"></div>
+        </div>
+      </section>
+      <section class="section soft">
+        <div class="section-inner">
+          <div class="section-title">
+            <div>
+              <p class="eyebrow">Chatbot</p>
+              <h2>Ask product questions</h2>
+            </div>
+          </div>
+          <aside class="chatbot user-chatbot">
+            <div class="chatbot-head">
+              <strong>Pratik Assistant</strong>
+              <span>Online</span>
+            </div>
+            <div id="chatMessages" class="chat-messages"></div>
+            <form id="chatForm" class="chat-form">
+              <input name="message" type="text" placeholder="Ask about products, catalogue, contact..." autocomplete="off">
+              <button type="submit">Send</button>
+            </form>
+          </aside>
+        </div>
+      </section>
+    </main>
+    <script src="products-data.js"></script>
+    <script src="user.js"></script>
+  </body>
+</html>
