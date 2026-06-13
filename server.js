@@ -127,17 +127,31 @@ function contentType(filePath) {
   };
   return types[extension] || "application/octet-stream";
 }
-
 function serveStatic(request, response, pathname) {
   let targetPath = pathname === "/" ? "index.html" : decodeURIComponent(pathname).replace(/^\/+/, "");
   
-  // 📁 CLEAN URL SUPPORT: Agar extension nahi hai (.html), toh check karo ki kya aisi html file exist karti hai
-  if (!path.extname(targetPath) && targetPath !== "") {
-    if (fs.existsSync(path.resolve(rootPath, targetPath + ".html"))) {
-      targetPath += ".html";
-    }
+  // Clean URL Support: Agar URL me dot (.) nahi hai, toh .html extension laga do safely
+  if (!targetPath.includes(".") && targetPath !== "") {
+    targetPath += ".html";
   }
 
+  const resolved = path.resolve(rootPath, targetPath);
+  if (!resolved.startsWith(rootPath)) {
+    response.writeHead(403);
+    response.end("Forbidden");
+    return;
+  }
+
+  fs.readFile(resolved, (error, data) => {
+    if (error) {
+      response.writeHead(404);
+      response.end("Not found");
+      return;
+    }
+    response.writeHead(200, { "Content-Type": contentType(resolved) });
+    response.end(data);
+  });
+}
   const resolved = path.resolve(rootPath, targetPath);
   if (!resolved.startsWith(rootPath)) {
     response.writeHead(403);
