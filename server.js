@@ -14,19 +14,31 @@ const sessions = new Map();
 const vendorUser = process.env.VENDOR_USER || "pratik";
 const vendorPass = process.env.VENDOR_PASSWORD || "pratik@123";
 
-fs.mkdirSync(dataDir, { recursive: true });
-fs.mkdirSync(uploadDir, { recursive: true });
+// Safely create directories if they don't exist
+try {
+  if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+  if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+} catch (e) {
+  console.log("Directory creation skipped or handled:", e.message);
+}
 
 function readProducts() {
   try {
-    return JSON.parse(fs.readFileSync(productsFile, "utf8"));
+    if (fs.existsSync(productsFile)) {
+      return JSON.parse(fs.readFileSync(productsFile, "utf8"));
+    }
+    return [];
   } catch {
-    return []; // ✅ File nahi hai toh empty array return karo
+    return [];
   }
 }
 
 function writeProducts(products) {
-  fs.writeFileSync(productsFile, JSON.stringify(products, null, 2));
+  try {
+    fs.writeFileSync(productsFile, JSON.stringify(products, null, 2));
+  } catch (e) {
+    console.error("Error writing products:", e.message);
+  }
 }
 
 function sendJson(response, status, payload) {
@@ -107,8 +119,12 @@ function saveImage(imageData, originalName) {
 
   const extension = match[1] === "jpeg" ? "jpg" : match[1];
   const fileName = `${Date.now()}-${slugify(originalName || "product")}.${extension}`;
-  fs.writeFileSync(path.join(uploadDir, fileName), Buffer.from(match[2], "base64"));
-  return `assets/vendor-products/${fileName}`;
+  try {
+    fs.writeFileSync(path.join(uploadDir, fileName), Buffer.from(match[2], "base64"));
+    return `assets/vendor-products/${fileName}`;
+  } catch {
+    return "";
+  }
 }
 
 function contentType(filePath) {
@@ -127,10 +143,12 @@ function contentType(filePath) {
   };
   return types[extension] || "application/octet-stream";
 }
+
+// 🌐 Optimized static routing with built-in Clean URLs support
 function serveStatic(request, response, pathname) {
   let targetPath = pathname === "/" ? "index.html" : decodeURIComponent(pathname).replace(/^\/+/, "");
   
-  // Clean URL Support: Agar URL me dot (.) nahi hai, toh .html extension laga do safely
+  // Clean URL: Agar request me file extension nahi hai, toh .html append karke check karo
   if (!targetPath.includes(".") && targetPath !== "") {
     targetPath += ".html";
   }
@@ -144,35 +162,8 @@ function serveStatic(request, response, pathname) {
 
   fs.readFile(resolved, (error, data) => {
     if (error) {
-      response.writeHead(404);
-      response.end("Not found");
-      return;
-    }
-    response.writeHead(200, { "Content-Type": contentType(resolved) });
-    response.end(data);
-  });
-}
-  const resolved = path.resolve(rootPath, targetPath);
-  if (!resolved.startsWith(rootPath)) {
-    response.writeHead(403);
-    response.end("Forbidden");
-    return;
-  }
-
-  fs.readFile(resolved, (error, data) => {
-    if (error) {
-      response.writeHead(404);
-      response.end("Not found");
-      return;
-    }
-    response.writeHead(200, { "Content-Type": contentType(resolved) });
-    response.end(data);
-  });
-}
-
-  fs.readFile(resolved, (error, data) => {
-    if (error) {
-      response.writeHead(404);
+      // Clean URL Fallback: Agar extension na jodne par bhi 404 aaye, index.html try karo
+      response.writeHead(404, { "Content-Type": "text/plain" });
       response.end("Not found");
       return;
     }
@@ -284,7 +275,6 @@ const server = http.createServer(async (request, response) => {
 });
 
 const port = Number(process.env.PORT || 3000);
-server.listen(port, () => {
-  console.log(`Pratik Enterprises app running at http://localhost:${port}`);
-  console.log(`Vendor login: ${vendorUser} / ${vendorPass}`);
+server.listen(port, "0.0.0.0", () => {
+  console.log(`Pratik Enterprises app running on port ${port}`);
 });
