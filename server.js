@@ -18,7 +18,11 @@ fs.mkdirSync(dataDir, { recursive: true });
 fs.mkdirSync(uploadDir, { recursive: true });
 
 function readProducts() {
-  return JSON.parse(fs.readFileSync(productsFile, "utf8"));
+  try {
+    return JSON.parse(fs.readFileSync(productsFile, "utf8"));
+  } catch {
+    return []; // ✅ File nahi hai toh empty array return karo
+  }
 }
 
 function writeProducts(products) {
@@ -125,13 +129,32 @@ function contentType(filePath) {
 }
 
 function serveStatic(request, response, pathname) {
-  const targetPath = pathname === "/" ? "index.html" : decodeURIComponent(pathname).replace(/^\/+/, "");
+  let targetPath = pathname === "/" ? "index.html" : decodeURIComponent(pathname).replace(/^\/+/, "");
+  
+  // 📁 CLEAN URL SUPPORT: Agar extension nahi hai (.html), toh check karo ki kya aisi html file exist karti hai
+  if (!path.extname(targetPath) && targetPath !== "") {
+    if (fs.existsSync(path.resolve(rootPath, targetPath + ".html"))) {
+      targetPath += ".html";
+    }
+  }
+
   const resolved = path.resolve(rootPath, targetPath);
   if (!resolved.startsWith(rootPath)) {
     response.writeHead(403);
     response.end("Forbidden");
     return;
   }
+
+  fs.readFile(resolved, (error, data) => {
+    if (error) {
+      response.writeHead(404);
+      response.end("Not found");
+      return;
+    }
+    response.writeHead(200, { "Content-Type": contentType(resolved) });
+    response.end(data);
+  });
+}
 
   fs.readFile(resolved, (error, data) => {
     if (error) {
